@@ -14640,6 +14640,13 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">load_Data</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Loads data from csv datasets</span>
+<span class="sd">    </span>
+<span class="sd">    Args: filename</span>
+<span class="sd">    </span>
+<span class="sd">    Returns: 4 lists containing the 4 datasets</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="c1"># TRAIN data</span>
         <span class="c1"># load fingerprints</span>
@@ -14688,7 +14695,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[42]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># all distance metrics accepted</span>
@@ -14718,6 +14725,13 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Locate the most similar neighbors and return list of indexes</span>
 <span class="k">def</span> <span class="nf">get_neighbors</span><span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">test_row</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">isAbs</span><span class="p">,</span> <span class="n">incr</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Locate the most similar neighbors</span>
+<span class="sd">    </span>
+<span class="sd">    Args: train rss dataset, 1 row of test rss dataset, k, distance metric, abs(bool), incr(bool)</span>
+<span class="sd">    </span>
+<span class="sd">    Returns: list of indexes</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">distances</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
     <span class="n">dist</span> <span class="o">=</span> <span class="mi">0</span>
         
@@ -14854,8 +14868,14 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[87]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># calculate knn of fingerprints</span>
-<span class="k">def</span> <span class="nf">knn</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">tstrss</span><span class="p">,</span> <span class="n">trnrss</span><span class="p">,</span> <span class="n">distance</span><span class="o">=</span><span class="s2">&quot;euclidean&quot;</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">isAbs</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">incr</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">knn</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">tstrss</span><span class="p">,</span> <span class="n">trnrss</span><span class="p">,</span> <span class="n">distance</span><span class="o">=</span><span class="s2">&quot;euclidean&quot;</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">isAbs</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">incr</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate knn of fingerprints</span>
+<span class="sd">    </span>
+<span class="sd">    Args: k, test rss dataset, train rss dataset, distance metric, norm(bool), abs(bool), incr(bool)</span>
+<span class="sd">    </span>
+<span class="sd">    Returns: list of nearest neighbours</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">all_neighbors</span> <span class="o">=</span> <span class="p">[]</span>
     
     <span class="k">if</span> <span class="n">norm</span><span class="p">:</span>
@@ -14873,8 +14893,14 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
         <span class="n">all_neighbors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">get_neighbors</span><span class="p">(</span><span class="n">trnrss</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">distance</span><span class="p">,</span> <span class="n">isAbs</span><span class="p">,</span> <span class="n">incr</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">all_neighbors</span>
 
-<span class="c1"># predict position of neighbors </span>
 <span class="k">def</span> <span class="nf">predict_position</span><span class="p">(</span><span class="n">all_neighbors</span><span class="p">,</span> <span class="n">trncrd</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Predicts position of each neighbour</span>
+<span class="sd">    </span>
+<span class="sd">    Args: neighbours list, train coordinates dataset, k</span>
+<span class="sd">    </span>
+<span class="sd">    Returns: list of predicted position for each neighbour</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">predicted_pos</span> <span class="o">=</span> <span class="p">[]</span>
     
     <span class="c1"># iterate all neighbors to predict position. Find k indexes in trncrd and calculate mean value.</span>
@@ -14888,8 +14914,14 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
         
     <span class="k">return</span> <span class="n">predicted_pos</span>
 
-<span class="c1"># error calculation: returns euclidean distance between predictions and tstcrd</span>
 <span class="k">def</span> <span class="nf">calculate_error</span><span class="p">(</span><span class="n">predicted_pos</span><span class="p">,</span> <span class="n">tstcrd</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculates error using euclidean distance between predictions and actual position</span>
+<span class="sd">    </span>
+<span class="sd">    Args: list of predicted positions, test coordinates dataset</span>
+<span class="sd">    </span>
+<span class="sd">    Returns: list of error distances</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">error_distances</span> <span class="o">=</span> <span class="p">[</span><span class="n">math</span><span class="o">.</span><span class="n">dist</span><span class="p">(</span><span class="n">predicted_pos</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">tstcrd</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">predicted_pos</span><span class="p">)]</span>
     <span class="k">return</span> <span class="n">error_distances</span>
 </pre></div>
@@ -14907,14 +14939,26 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[88]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># calculates knn and returns prediction of position</span>
-<span class="k">def</span> <span class="nf">knn_and_prediction</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">distance</span><span class="o">=</span><span class="s2">&quot;euclidean&quot;</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">isAbs</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">incr</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">knn_and_prediction</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">distance</span><span class="o">=</span><span class="s2">&quot;euclidean&quot;</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">isAbs</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">incr</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Loads data, calculates knn and predicts position</span>
+<span class="sd">    </span>
+<span class="sd">    Args: k, filename, distance metric, norm(bool), abs(bool), incr(bool)</span>
+<span class="sd">    </span>
+<span class="sd">    Returns: list of predicted positions</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">trnrss</span><span class="p">,</span> <span class="n">trncrd</span><span class="p">,</span> <span class="n">tstrss</span><span class="p">,</span> <span class="n">tstcrd</span> <span class="o">=</span> <span class="n">load_Data</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
     <span class="n">neighbors</span> <span class="o">=</span> <span class="n">knn</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">tstrss</span><span class="p">,</span> <span class="n">trnrss</span><span class="p">,</span> <span class="n">distance</span><span class="p">,</span> <span class="n">norm</span><span class="p">,</span> <span class="n">isAbs</span><span class="p">,</span> <span class="n">incr</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">predict_position</span><span class="p">(</span><span class="n">neighbors</span><span class="p">,</span> <span class="n">trncrd</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
 
-<span class="c1"># calculates knn, predicts position and returns error distances between prediction and real position</span>
 <span class="k">def</span> <span class="nf">positioning_error</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">distance</span><span class="o">=</span><span class="s2">&quot;euclidean&quot;</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">isAbs</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">incr</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Loads data, calculates knn, predicts position and calculates error distances between prediction and real position</span>
+<span class="sd">    </span>
+<span class="sd">    Args: k, filename, distance metric, norm(bool), abs(bool), incr(bool)</span>
+<span class="sd">    </span>
+<span class="sd">    Returns: list of error distances</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">trnrss</span><span class="p">,</span> <span class="n">trncrd</span><span class="p">,</span> <span class="n">tstrss</span><span class="p">,</span> <span class="n">tstcrd</span> <span class="o">=</span> <span class="n">load_Data</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
     <span class="n">neighbors</span> <span class="o">=</span> <span class="n">knn</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">tstrss</span><span class="p">,</span> <span class="n">trnrss</span><span class="p">,</span> <span class="n">distance</span><span class="p">,</span> <span class="n">norm</span><span class="p">,</span> <span class="n">isAbs</span><span class="p">,</span> <span class="n">incr</span><span class="p">)</span>
     <span class="n">positions</span> <span class="o">=</span> <span class="n">predict_position</span><span class="p">(</span><span class="n">neighbors</span><span class="p">,</span> <span class="n">trncrd</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
@@ -14934,12 +14978,24 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[152]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># calculates average error with 2 decimals from list of positioning errors</span>
-<span class="k">def</span> <span class="nf">avg_error</span><span class="p">(</span><span class="n">err_list</span><span class="p">):</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">avg_error</span><span class="p">(</span><span class="n">err_list</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculates average error with 2 decimals from list of positioning errors</span>
+<span class="sd">    </span>
+<span class="sd">    Args: list of error distances</span>
+<span class="sd">    </span>
+<span class="sd">    Returns: average error</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">fmean</span><span class="p">(</span><span class="n">err_list</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
 
-<span class="c1"># calculates average error for each distance metric</span>
 <span class="k">def</span> <span class="nf">print_postitioning_errors</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">metrics_list</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">abs_value</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">increment</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculates and prints average error for each distance metric</span>
+<span class="sd">    </span>
+<span class="sd">    Args: k, filename, distance metric list, norm(bool), abs(bool), incr(bool)</span>
+<span class="sd">    </span>
+<span class="sd">    Returns: nothing</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">metrics_list</span><span class="p">:</span>
         <span class="n">err</span> <span class="o">=</span> <span class="n">positioning_error</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">norm</span><span class="p">,</span> <span class="n">abs_value</span><span class="p">,</span> <span class="n">increment</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">avg_error</span><span class="p">(</span><span class="n">err</span><span class="p">)))</span>
@@ -14969,16 +15025,28 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># return list of predicted positions for each distance metric</span>
-<span class="k">def</span> <span class="nf">predict_positions_dst_metrics</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">metrics_list</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">abs_value</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">increment</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">predict_positions_dst_metrics</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">metrics_list</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">abs_value</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">increment</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculates list of predicted positions for each distance metric</span>
+<span class="sd">    </span>
+<span class="sd">    Args: k, filename, distance metric list, norm(bool), abs(bool), incr(bool)</span>
+<span class="sd">    </span>
+<span class="sd">    Returns: list of positions</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">all_positions</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">metrics_list</span><span class="p">:</span>
         <span class="n">pred_positions</span> <span class="o">=</span> <span class="n">knn_and_prediction</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">norm</span><span class="p">,</span> <span class="n">abs_value</span><span class="p">,</span> <span class="n">increment</span><span class="p">)</span>
         <span class="n">all_positions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pred_positions</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">all_positions</span>
 
-<span class="c1"># return list of centroids from list of predicted positions by different distance metrics</span>
 <span class="k">def</span> <span class="nf">centroids_list</span><span class="p">(</span><span class="n">pos_list</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculates list of centroids from list of predicted positions by different distance metrics</span>
+<span class="sd">    </span>
+<span class="sd">    Args: list of predicted positions</span>
+<span class="sd">    </span>
+<span class="sd">    Returns: list of centroid positions</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">centroids</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">metrics_len</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">pos_list</span><span class="p">)</span>
     <span class="n">data_len</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">pos_list</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
@@ -14993,14 +15061,21 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
         <span class="n">centroids</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="nb">round</span><span class="p">(</span><span class="n">x</span><span class="o">/</span><span class="n">metrics_len</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="nb">round</span><span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="n">metrics_len</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="nb">round</span><span class="p">(</span><span class="n">z</span><span class="o">/</span><span class="n">metrics_len</span><span class="p">,</span> <span class="mi">1</span><span class="p">)])</span>
     <span class="k">return</span> <span class="n">centroids</span>
 
-<span class="c1"># return average error from ensembled distance metrics</span>
-<span class="k">def</span> <span class="nf">avg_error_ensemble</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">metrics_list</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">abs_value</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">increment</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="c1"># return error list from ensembled distance metrics</span>
+<span class="k">def</span> <span class="nf">error_ensemble</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">metrics_list</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">abs_value</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">increment</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Predicts position for selected distance metrics, calculates centroids and calculates error distances</span>
+<span class="sd">    between prediction and real position</span>
+<span class="sd">    </span>
+<span class="sd">    Args: k, filename, distance metric list, norm(bool), abs(bool), incr(bool)</span>
+<span class="sd">    </span>
+<span class="sd">    Returns: list of error distances</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># knn and prediction for each distance metric</span>
     <span class="n">positions_lst</span> <span class="o">=</span> <span class="n">predict_positions_dst_metrics</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">metrics_list</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">abs_value</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">increment</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
     <span class="n">centroids</span> <span class="o">=</span> <span class="n">centroids_list</span><span class="p">(</span><span class="n">positions_lst</span><span class="p">)</span>
     <span class="n">trnrss</span><span class="p">,</span> <span class="n">trncrd</span><span class="p">,</span> <span class="n">tstrss</span><span class="p">,</span> <span class="n">tstcrd</span> <span class="o">=</span> <span class="n">load_Data</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
-    <span class="n">error</span> <span class="o">=</span> <span class="n">calculate_error</span><span class="p">(</span><span class="n">centroids</span><span class="p">,</span> <span class="n">tstcrd</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">avg_error</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">calculate_error</span><span class="p">(</span><span class="n">centroids</span><span class="p">,</span> <span class="n">tstcrd</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -15266,31 +15341,82 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[9]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#ECDF function to generate x and y axis data</span>
-<span class="k">def</span> <span class="nf">ecdf</span><span class="p">(</span><span class="n">xdata</span><span class="p">):</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">ecdf</span><span class="p">(</span><span class="n">xdata</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generate x and y axis data</span>
+<span class="sd">    </span>
+<span class="sd">    Args: list of positions</span>
+<span class="sd">    </span>
+<span class="sd">    Returns: x, y data format</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">xdataecdf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">xdata</span><span class="p">)</span>
     <span class="n">ydataecdf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">xdata</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">xdata</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">xdataecdf</span><span class="p">,</span> <span class="n">ydataecdf</span>
 
-<span class="k">def</span> <span class="nf">plot_ecdf</span><span class="p">(</span><span class="n">data1</span><span class="p">,</span> <span class="n">data2</span><span class="p">,</span> <span class="n">data3</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">figure</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">plot_ecdf</span><span class="p">(</span><span class="n">data1</span><span class="p">,</span> <span class="n">data2</span><span class="p">,</span> <span class="n">data3</span><span class="p">,</span> <span class="n">data4</span><span class="p">,</span> <span class="n">data5</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">l1</span><span class="p">,</span> <span class="n">l2</span><span class="p">,</span> <span class="n">l3</span><span class="p">,</span> <span class="n">l4</span><span class="p">,</span> <span class="n">l5</span><span class="p">,</span> <span class="n">figure</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generate plot using matplotlib package</span>
+<span class="sd">    </span>
+<span class="sd">    Args: list of data, title of figure, legend, number of figure</span>
+<span class="sd">    </span>
+<span class="sd">    Returns: nothing</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1">#Get the x and y data for ecdf plot from ecdf method</span>
     <span class="n">x1</span><span class="p">,</span><span class="n">y1</span> <span class="o">=</span> <span class="n">ecdf</span><span class="p">(</span><span class="n">data1</span><span class="p">)</span>
-    <span class="n">x5</span><span class="p">,</span><span class="n">y5</span> <span class="o">=</span> <span class="n">ecdf</span><span class="p">(</span><span class="n">data2</span><span class="p">)</span>
-    <span class="n">x11</span><span class="p">,</span><span class="n">y11</span> <span class="o">=</span> <span class="n">ecdf</span><span class="p">(</span><span class="n">data3</span><span class="p">)</span>
+    <span class="n">x2</span><span class="p">,</span><span class="n">y2</span> <span class="o">=</span> <span class="n">ecdf</span><span class="p">(</span><span class="n">data2</span><span class="p">)</span>
+    <span class="n">x3</span><span class="p">,</span><span class="n">y3</span> <span class="o">=</span> <span class="n">ecdf</span><span class="p">(</span><span class="n">data3</span><span class="p">)</span>
+    <span class="n">x4</span><span class="p">,</span><span class="n">y4</span> <span class="o">=</span> <span class="n">ecdf</span><span class="p">(</span><span class="n">data4</span><span class="p">)</span>
+    <span class="n">x5</span><span class="p">,</span><span class="n">y5</span> <span class="o">=</span> <span class="n">ecdf</span><span class="p">(</span><span class="n">data5</span><span class="p">)</span>
 
     <span class="c1">#Plot the data using matplotlib</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figure</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="n">markersize</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="n">markersize</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x3</span><span class="p">,</span> <span class="n">y3</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="n">markersize</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x4</span><span class="p">,</span> <span class="n">y4</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="n">markersize</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x5</span><span class="p">,</span> <span class="n">y5</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="n">markersize</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x11</span><span class="p">,</span> <span class="n">y11</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="n">markersize</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">((</span><span class="s2">&quot;k=1&quot;</span><span class="p">,</span> <span class="s2">&quot;k=5&quot;</span><span class="p">,</span> <span class="s2">&quot;k=11&quot;</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">((</span><span class="n">l1</span><span class="p">,</span> <span class="n">l2</span><span class="p">,</span> <span class="n">l3</span><span class="p">,</span> <span class="n">l4</span><span class="p">,</span> <span class="n">l5</span><span class="p">))</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Error distance&#39;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Error probability&#39;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">margins</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+    
+<span class="k">def</span> <span class="nf">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">xlabel</span><span class="p">,</span> <span class="n">ylabel</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generate scatter plot using matplotlib package</span>
+<span class="sd">    </span>
+<span class="sd">    Args: xdata, ydata, title, legend</span>
+<span class="sd">    </span>
+<span class="sd">    Returns: nothing</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">m</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">m</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">b</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">xlabel</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="n">ylabel</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span> 
 </pre></div>
 
      </div>
